@@ -180,7 +180,7 @@
             </div>
             
             <div class="text-center mt-10">
-                <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+                <a href="/readarticle" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
                     Lihat Semua Artikel
                 </a>
             </div>
