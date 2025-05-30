@@ -11,6 +11,10 @@ Route::get('/readarticle', function () {
     return view('readarticle', ['title' => 'ReadArticle']);
 });
 
+Route::get('/articlelist', function () {
+    return view('articlelist', ['title' => 'List Article']);
+});
+
 Route::get('/makearticle', function () {
     return view('makearticle', ['title' => 'Makearticle']);
 });
@@ -18,6 +22,8 @@ Route::get('/makearticle', function () {
 Route::get('/reservation', function () {
     return view('reservation', ['title' => 'Reservation']);
 });
+
+Route::view('/reservations/store', 'reservation')->name('reservations.store');
 
 Route::get('/signIn', function () {
     return view('signIn', ['title' => 'SignUp']);
