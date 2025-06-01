@@ -7,55 +7,124 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Tentang Proyek Ini
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Proyek ini dibangun menggunakan **Laravel 12**, sebuah framework aplikasi web dengan sintaks yang ekspresif dan elegan, serta **Tailwind CSS** untuk desain antarmuka yang modern dan responsif. Kami bertujuan untuk memberikan pengalaman pengembangan yang menyenangkan dan efisien.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Fitur utama yang didukung oleh Laravel dalam proyek ini meliputi:
+- [Routing yang sederhana dan cepat](https://laravel.com/docs/routing).
+- [Dependency injection container yang kuat](https://laravel.com/docs/container).
+- Dukungan berbagai backend untuk [session](https://laravel.com/docs/session) dan [cache](https://laravel.com/docs/cache).
+- [ORM database yang intuitif](https://laravel.com/docs/eloquent).
+- [Migrasi skema database](https://laravel.com/docs/migrations).
+- [Pemrosesan pekerjaan latar belakang](https://laravel.com/docs/queues).
+- [Broadcasting acara secara real-time](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Prasyarat
+- PHP >= 8.2
+- Composer
+- Node.js dan npm (versi terbaru direkomendasikan)
+- MySQL atau database lain yang didukung
+- Git
 
-## Learning Laravel
+## Langkah-Langkah Instalasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Kloning Repository**
+   Jalankan perintah berikut untuk mengkloning repository dan masuk ke direktori proyek:
+   ```bash
+   git clone https://github.com/warsom77/halosehat.id.git
+   cd halosehat.id
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Instal Dependensi PHP**
+   Instal dependensi Laravel menggunakan Composer:
+   ```bash
+   composer install
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Konfigurasi File Lingkungan**
+   - Salin file `.env.example` untuk membuat file `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Sesuaikan file `.env` dengan kredensial database Anda (misalnya, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
+   - Buat kunci aplikasi:
+     ```bash
+     php artisan key:generate
+     ```
 
-## Laravel Sponsors
+4. **Jalankan Migrasi Database**
+   Jalankan migrasi untuk mengatur skema database:
+   ```bash
+   php artisan migrate
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Instal Dependensi Node.js**
+   Instal paket Node.js yang diperlukan:
+   ```bash
+   npm install
+   ```
 
-### Premium Partners
+6. **Instal dan Konfigurasi Tailwind CSS**
+   - Instal Tailwind CSS dan dependensinya:
+     ```bash
+     npm install -D tailwindcss postcss autoprefixer
+     npx tailwindcss init -p
+     ```
+   - Perbarui file `tailwind.config.js` untuk menyertakan path ke view Laravel:
+     ```javascript
+     /** @type {import('tailwindcss').Config} */
+     export default {
+       content: [
+         "./resources/**/*.blade.php",
+         "./resources/**/*.js",
+         "./resources/**/*.vue",
+       ],
+       theme: {
+         extend: {},
+       },
+       plugins: [],
+     }
+     ```
+   - Tambahkan direktif Tailwind ke file `resources/css/app.css`:
+     ```css
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities;
+     ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+7. **Jalankan Server Pengembangan Laravel**
+   Mulai server pengembangan Laravel:
+   ```bash
+   php artisan serve
+   ```
 
-## Contributing
+8. **Kompilasi Tailwind CSS**
+   Kompilasi dan pantau perubahan pada Tailwind CSS:
+   ```bash
+   npm run dev
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Mengakses Aplikasi
+- Aplikasi akan tersedia di `http://localhost:8000` (atau port lain jika ditentukan).
+- Pastikan proses kompilasi Tailwind CSS berjalan untuk melihat gaya yang diterapkan.
 
-## Code of Conduct
+## Belajar Laravel
+Laravel memiliki [dokumentasi](https://laravel.com/docs) dan pustaka tutorial video yang sangat lengkap. Anda juga bisa mencoba [Laravel Bootcamp](https://bootcamp.laravel.com) untuk membangun aplikasi Laravel dari awal, atau menonton tutorial di [Laracasts](https://laracasts.com) untuk mempelajari Laravel, PHP modern, pengujian unit, dan JavaScript.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Pemecahan Masalah
+- Jika Composer bermasalah, pastikan PHP dan Composer diperbarui.
+- Jika Tailwind CSS tidak berfungsi, periksa konfigurasi `tailwind.config.js` dan `app.css`.
+- Jika migrasi database gagal, verifikasi kredensial database di file `.env`.
 
-## Security Vulnerabilities
+## Kontribusi
+Kami menyambut kontribusi untuk proyek ini! Silakan baca [panduan kontribusi](https://laravel.com/docs/contributions) untuk informasi lebih lanjut.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Kode Etik
+Untuk memastikan komunitas yang ramah, harap patuhi [Kode Etik](https://laravel.com/docs/contributions#code-of-conduct).
 
-## License
+## Kerentanan Keamanan
+Jika Anda menemukan kerentanan keamanan, silakan kirim email ke Taylor Otwell di [taylor@laravel.com](mailto:taylor@laravel.com). Semua masalah keamanan akan segera ditangani.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Lisensi
+Proyek ini menggunakan framework Laravel yang dilisensikan di bawah [lisensi MIT](https://opensource.org/licenses/MIT).
