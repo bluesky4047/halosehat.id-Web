@@ -4,6 +4,9 @@
     @vite('resources/js/app.js')
     <!-- Hero Banner Slider -->
     {{-- <!-- LARAVEL: Ganti dengan @foreach($banners as $banner) untuk data dari database --> --}}
+    <body>
+        <h1 class="text-3xl font-bold mb-6">Welcome, {{ auth()->check() ? auth()->user()->name : 'Guest' }}!</h1>
+    </body>
     <section class="relative h-96 md:h-[500px] overflow-hidden">
         <div id="slider" class="relative w-full h-full">
             <!-- Banner 1 -->

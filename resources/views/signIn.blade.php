@@ -21,10 +21,16 @@
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-10 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
         <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+        @if(session('success'))
+          <div class="bg-green-100 text-green-700 p-2 mb-4 rounded">
+              {{ session('success') }}
+          </div>
+        @endif
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="{{ route('login.submit') }}" method="POST">
+          @csrf
           <div>
             <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
             <div class="mt-2">
@@ -36,7 +42,7 @@
             <div class="flex items-center justify-between">
               <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
               <div class="text-sm">
-                <a href="/signUp" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                <a href="/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
               </div>
             </div>
             <div class="mt-2">
@@ -51,7 +57,7 @@
 
         <p class="mt-10 text-center text-sm/6 text-gray-500">
           Not a member?
-          <a href="/signUp" class="font-semibold text-indigo-600 hover:text-indigo-500">Register</a>
+          <a href="/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Register</a>
         </p>
       </div>
     </div>
