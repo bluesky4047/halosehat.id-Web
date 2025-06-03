@@ -1,30 +1,3 @@
-        <!-- Data Dummy -->
-        @php
-            $reservations = [
-                (object) [
-                    'reservation_date' => '2025-06-01',
-                    'reservation_time' => '09:00',
-                    'hospital' => 'Hospital A',
-                    'service' => 'Consultation',
-                    'status' => 'Confirmed'
-                ],
-                (object) [
-                    'reservation_date' => '2025-06-02',
-                    'reservation_time' => '14:30',
-                    'hospital' => 'Hospital B',
-                    'service' => 'Check-up',
-                    'status' => 'Pending'
-                ],
-                (object) [
-                    'reservation_date' => '2025-06-03',
-                    'reservation_time' => '11:15',
-                    'hospital' => 'Hospital C',
-                    'service' => 'Treatment',
-                    'status' => 'Cancelled'
-                ]
-            ];
-        @endphp
-
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="container mx-auto px-4 py-8">
