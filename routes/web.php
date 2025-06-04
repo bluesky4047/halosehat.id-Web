@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ArticleController; 
 
 Route::get('/', function () {
     return view('home', ['title' => 'HalloSehat.id']);
@@ -40,17 +41,10 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Route::get('/readarticle', function () {
-//     return view('readarticle', ['title' => 'ReadArticle']);
-// });
-
-// Route::get('/articlelist', function () {
-//     return view('articlelist', ['title' => 'List Article']);
-// });
-
-// Route::get('/makearticle', function () {
-//     return view('makearticle', ['title' => 'Makearticle']);
-// });
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/makearticle', [ArticleController::class, 'create'])->name('articles.create');
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+Route::get('/readarticle/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 // Route::get('/reservation', function () {
 //     return view('reservation', ['title' => 'Reservation']);
