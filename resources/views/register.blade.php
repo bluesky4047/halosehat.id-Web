@@ -4,8 +4,9 @@
         <div class="max-w-md w-full space-y-8">
             <!-- Header -->
             <div class="text-center">
-                <div class="mx-auto h-12 w-12 bg-indigo-600 rounded-full flex items-center justify-center">
+                <div class="mx-auto h-12 w-12  rounded-full flex items-center justify-center">
                     <i class="fas fa-user-plus text-white text-xl"></i>
+                    <img src="https://od.lk/s/NjZfNjM2NDM5NjBf/hospital.svg" alt="">
                 </div>
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
                     Create your account
@@ -190,7 +191,7 @@
                 <div class="text-center">
                     <p class="text-sm text-gray-600">
                         Already have an account?
-                        <a href="/signIn" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+                        <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
                             Sign in here
                         </a>
                     </p>
