@@ -1,107 +1,139 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <form id="articleForm" class="space-y-8" enctype="multipart/form-data">
+        {{-- Pesan Sukses/Error --}}
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Sukses!</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" onclick="this.parentElement.parentElement.remove();"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.15a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.029a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.15 2.758 3.15a1.2 1.2 0 0 1 0 1.697z"/></svg>
+                </span>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Oops!</strong>
+                <span class="block sm:inline">Ada beberapa masalah dengan input Anda:</span>
+                <ul class="mt-2 list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" onclick="this.parentElement.parentElement.remove();"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.15a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.029a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.15 2.758 3.15a1.2 1.2 0 0 1 0 1.697z"/></svg>
+                </span>
+            </div>
+        @endif
+
+        <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
             @csrf
-            
-            <!-- Article Title -->
+
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <label for="title" class="block text-sm font-semibold text-gray-900 mb-3">
                     Judul Artikel
                     <span class="text-red-500">*</span>
                 </label>
-                <input 
-                    type="text" 
-                    id="title" 
+                <input
+                    type="text"
+                    id="title"
                     name="title"
                     placeholder="Masukkan judul artikel yang menarik..."
                     class="w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder-gray-400"
                     required
+                    value="{{ old('title') }}"
+                    maxlength="255" {{-- Tambahkan maxlength sesuai di migrasi --}}
                 >
                 <div class="mt-2 text-sm text-gray-500">
-                    <span id="titleCount">0</span>/100 karakter
+                    <span id="titleCount">{{ strlen(old('title')) }}</span>/255 karakter
                 </div>
+                @error('title')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
-            <!-- Featured Image -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <label for="category" class="block text-sm font-semibold text-gray-900 mb-3">
+                    Kategori Artikel
+                </label>
+                <input
+                    type="text"
+                    id="category"
+                    name="category"
+                    placeholder="Contoh: Teknologi, Kesehatan, Gaya Hidup"
+                    class="w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder-gray-400"
+                    value="{{ old('category') }}"
+                    maxlength="255" {{-- Tambahkan maxlength sesuai di migrasi --}}
+                >
+                @error('category')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <label class="block text-sm font-semibold text-gray-900 mb-3">
                     Gambar Unggulan
                 </label>
-                <div class="relative">
-                    <div id="imageUploadArea" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
-                        <div id="uploadPlaceholder">
-                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
-                            <p class="text-lg font-medium text-gray-600">Klik atau seret gambar ke sini</p>
-                            <p class="text-sm text-gray-500 mt-2">PNG, JPG, JPEG hingga 5MB</p>
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg"
+                     id="image-drop-area">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                <span>Unggah file</span>
+                                <input id="file-upload" name="featured_image" type="file" class="sr-only">
+                            </label>
+                            <p class="pl-1">atau tarik dan lepas</p>
                         </div>
-                        <div id="imagePreview" class="hidden">
-                            <img id="previewImg" src="" alt="Preview" class="max-h-64 mx-auto rounded-lg shadow-md">
-                            <button type="button" id="removeImage" class="mt-4 px-4 py-2 text-sm text-red-600 hover:text-red-800 transition-colors">
-                                <i class="fas fa-trash mr-2"></i>Hapus Gambar
-                            </button>
+                        <p class="text-xs text-gray-500">PNG, JPG, GIF hingga 2MB</p>
+                        <div id="image-preview" class="mt-4 @if(!old('featured_image')) hidden @endif">
+                            @if(old('featured_image'))
+                                <img src="{{ old('featured_image_url') }}" alt="Image Preview" class="mx-auto max-h-48 rounded-lg shadow-md">
+                                <p id="image-name" class="mt-2 text-sm text-gray-600">{{ old('featured_image_name') }}</p>
+                            @else
+                                <img src="#" alt="Image Preview" class="mx-auto max-h-48 rounded-lg shadow-md">
+                                <p id="image-name" class="mt-2 text-sm text-gray-600"></p>
+                            @endif
                         </div>
                     </div>
-                    <input type="file" id="featured_image" name="featured_image" accept="image/*" class="hidden">
                 </div>
+                @error('featured_image')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
-            <!-- Article Content -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <label for="content" class="block text-sm font-semibold text-gray-900 mb-3">
                     Konten Artikel
                     <span class="text-red-500">*</span>
                 </label>
-                <textarea 
-                    id="content" 
+                <textarea
+                    id="content"
                     name="content"
-                    class="w-full h-96 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Mulai menulis artikel Anda di sini..."
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3"
+                    rows="15"
+                    placeholder="Tulis konten artikel Anda di sini..."
                     required
-                ></textarea>
+                >{{ old('content') }}</textarea>
+                @error('content')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
-            <!-- Article Status -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <label class="block text-sm font-semibold text-gray-900 mb-3">
-                    Status Publikasi
-                </label>
-                <div class="flex space-x-4">
-                    <label class="flex items-center">
-                        <input type="radio" name="status" value="draft" checked class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <span class="ml-2 text-sm font-medium text-gray-700">Draft</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="status" value="published" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <span class="ml-2 text-sm font-medium text-gray-700">Terbitkan Sekarang</span>
-                    </label>
-                </div>
-                <div id="publishDateSection" class="mt-4 hidden">
-                    <label for="published_at" class="block text-sm font-medium text-gray-700 mb-2">
-                        Tanggal Publikasi
-                    </label>
-                    <input 
-                        type="datetime-local" 
-                        id="published_at" 
-                        name="published_at"
-                        class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    >
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex justify-end space-x-4 pt-6">
-                <button 
-                    type="button" 
-                    class="px-6 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+            <div class="flex justify-end gap-4">
+                <a href="{{ route('articles.index') }}"
+                    class="px-8 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:scale-105 transition-all duration-200 flex items-center justify-center"
                 >
+                    <i class="fas fa-times-circle mr-2"></i>
                     Batal
-                </button>
-                <button 
-                    type="submit" 
-                    class="px-8 py-3 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                </a>
+                <button
+                    type="submit"
+                    class="px-8 py-3 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center"
                 >
                     <i class="fas fa-paper-plane mr-2"></i>
                     <span id="submitText">Simpan Artikel</span>
@@ -110,20 +142,64 @@
         </form>
     </main>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl p-6 mx-4 max-w-md w-full transform transition-all">
-            <div class="text-center">
-                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-                    <i class="fas fa-check text-green-600 text-xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Artikel Berhasil Disimpan!</h3>
-                <p class="text-gray-600 mb-6">Artikel Anda telah berhasil disimpan ke database.</p>
-                <button id="closeModal" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    Tutup
-                </button>
-            </div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Title character count (updated for 255 max length)
+            const titleInput = document.getElementById('title');
+            const titleCount = document.getElementById('titleCount');
+            titleInput.addEventListener('input', function() {
+                titleCount.textContent = this.value.length;
+            });
 
+            // Image file upload preview
+            const fileUpload = document.getElementById('file-upload');
+            const imagePreview = document.getElementById('image-preview');
+            const previewImage = imagePreview.querySelector('img');
+            const imageName = document.getElementById('image-name');
+
+            fileUpload.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        imageName.textContent = file.name;
+                        imagePreview.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.classList.add('hidden');
+                    previewImage.src = '#';
+                    imageName.textContent = '';
+                }
+            });
+
+            // Drag and drop functionality for image
+            const imageDropArea = document.getElementById('image-drop-area');
+
+            imageDropArea.addEventListener('dragover', (event) => {
+                event.stopPropagation();
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'copy';
+                imageDropArea.classList.add('border-blue-500', 'bg-blue-50');
+            });
+
+            imageDropArea.addEventListener('dragleave', (event) => {
+                imageDropArea.classList.remove('border-blue-500', 'bg-blue-50');
+            });
+
+            imageDropArea.addEventListener('drop', (event) => {
+                event.stopPropagation();
+                event.preventDefault();
+                imageDropArea.classList.remove('border-blue-500', 'bg-blue-50');
+
+                const files = event.dataTransfer.files;
+                if (files.length > 0) {
+                    fileUpload.files = files; // Set the dropped file to the input
+                    const changeEvent = new Event('change');
+                    fileUpload.dispatchEvent(changeEvent); // Trigger change event
+                }
+            });
+        });
+    </script>
 </x-layout>
