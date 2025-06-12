@@ -16,7 +16,7 @@
                         <div class="max-w-2xl">
                             <h1 class="text-4xl md:text-6xl font-bold mb-4">Layanan Kesehatan Terpercaya</h1>
                             <p class="text-xl mb-8">Reservasi rumah sakit dengan mudah dan cepat melalui sistem terintegrasi Kemenkes</p>
-                            <a href="/reservation" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition inline-block z-20 pointer-events-auto" aria-label="Mulai reservasi rumah sakit">Mulai Reservasi</a>
+                            <a href="{{ auth()->check() ? url('/reservation') : route('login.form') }}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition inline-block z-20 pointer-events-auto" aria-label="Mulai reservasi rumah sakit">Mulai Reservasi</a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +266,7 @@
         </div>
         
         <div class="text-center mt-10">
-            <a href="/articlelist" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+            <a href="{{ auth()->check() ? url('/articles') : route('login.form') }}" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
                 Lihat Semua Artikel
             </a>
         </div>

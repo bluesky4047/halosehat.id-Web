@@ -52,6 +52,12 @@ Route::get('/makearticle', [ArticleController::class, 'create'])->name('articles
 Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
 Route::get('/readarticle/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
 
+
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
+
+
 // Route::get('/reservation', function () {
 //     return view('reservation', ['title' => 'Reservation']);
 // });

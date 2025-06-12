@@ -51,7 +51,7 @@ class ArticleController extends Controller
             'title'          => 'required|string|max:255|unique:articles,title', // Judul harus unik
             'content'        => 'required|string',
             'category'       => 'nullable|string|max:255',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi file gambar
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Validasi file gambar
         ]);
 
         $imageUrl = null; // Inisialisasi URL gambar
@@ -125,7 +125,7 @@ class ArticleController extends Controller
             'title'          => 'required|string|max:255|unique:articles,title,' . $article->id,
             'content'        => 'required|string',
             'category'       => 'nullable|string|max:255',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             // 'remove_image'   => 'nullable|boolean', // Opsional: jika ada checkbox untuk menghapus gambar
         ]);
 

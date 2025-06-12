@@ -25,7 +25,7 @@
                     <div class="relative">
                         <div id="image-preview" class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center border-2 border-dashed border-gray-300 overflow-hidden">
                             <i class="fas fa-camera text-gray-400 text-2xl" id="camera-icon"></i>
-                            <img id="preview-img" class="w-full h-full object-cover hidden" alt="Preview">
+                            <img id="preview-img" class="w-full h-full object-cover hidden" src="{{ asset('uploads/profile_images/default-profile.png') }}" alt="Profile Picture">
                         </div>
                         <input type="file" id="profile_image" name="profile_image" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                     </div>
@@ -199,4 +199,23 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('profile_image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const previewImg = document.getElementById('preview-img');
+            const cameraIcon = document.getElementById('camera-icon');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewImg.classList.remove('hidden');
+                    cameraIcon.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 </x-layout>

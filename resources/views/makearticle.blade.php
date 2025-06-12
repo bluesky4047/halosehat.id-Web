@@ -89,7 +89,7 @@
                             </label>
                             <p class="pl-1">atau tarik dan lepas</p>
                         </div>
-                        <p class="text-xs text-gray-500">PNG, JPG, GIF hingga 2MB</p>
+                        <p class="text-xs text-gray-500">PNG, JPG, GIF hingga 10MB</p>
                         <div id="image-preview" class="mt-4 @if(!old('featured_image')) hidden @endif">
                             @if(old('featured_image'))
                                 <img src="{{ old('featured_image_url') }}" alt="Image Preview" class="mx-auto max-h-48 rounded-lg shadow-md">

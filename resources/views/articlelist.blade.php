@@ -17,7 +17,7 @@
                                  alt="{{ $article->title }}"
                                  class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
                         @else
-                            <img src="https://via.placeholder.com/1000x600?text=No+Image"
+                            <img src="/storage/article_images/default-article.jpg"
                                  alt="Default Image"
                                  class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
                         @endif

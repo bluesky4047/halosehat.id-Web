@@ -22,8 +22,8 @@
                 </h1>
                 <div class="flex items-center gap-4 text-gray-700 text-sm animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="flex items-center gap-2">
-                        <img class="w-8 h-8 rounded-full object-cover" src="https://source.unsplash.com/random/100x100?person" alt="Author">
-                        <span>Oleh: Administrator</span> {{-- Ganti ini dengan nama penulis jika ada --}}
+                        <img class="w-6 h-6 rounded-full object-cover" src="https://www.svgrepo.com/show/483912/person.svg" alt="Author">
+                        <span>Oleh: Seseorang</span> {{-- Ganti ini dengan nama penulis jika ada --}}
                     </div>
                     <div class="flex items-center gap-2">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -48,7 +48,7 @@
                          alt="{{ $article->title }}"
                          class="w-full h-full object-cover">
                 @else
-                    <img src="https://via.placeholder.com/1000x600?text=No+Image"
+                    <img src="/storage/article_images/default-article.jpg"
                          alt="Default Image"
                          class="w-full h-full object-cover">
                 @endif
@@ -56,8 +56,8 @@
             </div>
 
             <div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-12">
-                <article class="flex-grow text-gray-800 leading-relaxed text-lg prose prose-blue max-w-none animate-fade-in-up">
-                    {!! $article->content !!} 
+                <article class="flex-grow text-gray-800 leading-relaxed text-lg prose prose-blue max-w-none animate-fade-in-up" style="text-align: justify; ">
+                    {!! nl2br(e($article->content)) !!} 
                 </article>
 
                 <div class="lg:w-80 flex-shrink-0 animate-fade-in-up" style="animation-delay: 0.4s;">

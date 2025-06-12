@@ -39,7 +39,7 @@
                     @auth
                         <img class="size-8 rounded-full" src="{{ Auth::user()->profile_image ? asset(Auth::user()->profile_image) : asset('default-profile.png') }}" alt="Profile Image">
                     @else
-                        <img class="size-8 rounded-full" src="/uploads/profile_images/default-profile.png" alt="Default Guest Image">
+                        <img class="size-6 " src="/uploads/profile_images/default-profile.png" alt="Default Guest Image">
                     @endauth
                     </button>
                 </div>
