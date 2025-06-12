@@ -35,8 +35,13 @@
                                     </span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <button class="text-blue-600 hover:text-blue-800 mr-2">Edit</button>
-                                    <button class="text-red-600 hover:text-red-800">Cancel</button>
+                                    <a href="{{ route('reservations.edit', $reservation->id) }}" class="text-blue-600 hover:text-blue-800 mr-2">Edit</a>
+
+                                    <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 hover:text-red-800">Cancel</button>
+                                    </form>
                                 </td>
                             </tr>
                         @empty

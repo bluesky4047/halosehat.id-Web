@@ -38,7 +38,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reservation', [ReservationController::class, 'index'])->name('reservations.index');
     Route::post('/reservation', [ReservationController::class, 'store'])->name('reservations.store');
-    
+    Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+    Route::put('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+
     Route::get('/account', function () {
         return view('account', ['title' => 'Edit Akun']);
     });
