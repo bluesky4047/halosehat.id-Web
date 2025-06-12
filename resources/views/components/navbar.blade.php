@@ -36,7 +36,11 @@
                     <button type="button" @click="isOpen = !isOpen" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="absolute -inset-1.5"></span>
                     <span class="sr-only">Open user menu</span>
-                    <img class="size-8 rounded-full" src="https://od.lk/s/NjZfNjM2NDM4MDRf/arley.png" alt="">
+                    @auth
+                        <img class="size-8 rounded-full" src="{{ Auth::user()->profile_image ? asset(Auth::user()->profile_image) : asset('default-profile.png') }}" alt="Profile Image">
+                    @else
+                        <img class="size-8 rounded-full" src="/uploads/profile_images/default-profile.png" alt="Default Guest Image">
+                    @endauth
                     </button>
                 </div>
 
@@ -57,7 +61,7 @@
                         <a href="{{ route('login.form') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Login</a>
                         {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a> --}}
                     @else
-                        <a href="/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Account</a>
+                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Account</a>
                         <a href="/makearticle" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Make Article</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -102,7 +106,7 @@
                 <div class="flex items-center px-5">
                     @auth
                         <div class="shrink-0">
-                            <img class="size-10 rounded-full" src="https://od.lk/s/NjZfNjM2NDM4MDRf/arley.png" alt="">
+                            <img class="size-8 rounded-full" src="{{ Auth::user()->profile_image ? asset(Auth::user()->profile_image) : asset('default-profile.png') }}" alt="Profile Image">
                         </div>
                         <div class="ml-3">
                             <div class="text-base/5 font-medium text-white">{{ Auth::user()->name }}</div>

@@ -35,6 +35,6 @@ class RegisterController extends Controller
 
         User::create($validated);
 
-        return redirect('/signIn')->with('success', 'Account created successfully. Please sign in.');
+        return redirect('/login')->with('success', 'Account created successfully. Please sign in.');
     }
 }

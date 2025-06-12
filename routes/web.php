@@ -21,6 +21,9 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
     Route::get('/readarticle', function () {
         return view('readarticle', ['title' => 'ReadArticle']);
     });
