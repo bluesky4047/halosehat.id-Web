@@ -9,6 +9,5 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
-        require('@tailwindcss/typography'),
     ],
 });
