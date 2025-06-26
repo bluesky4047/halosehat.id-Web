@@ -10,7 +10,7 @@
     <section class="relative h-96 md:h-[500px] overflow-hidden">
         <div id="slider" class="relative w-full h-full">
             <!-- Banner 1 -->
-            <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000 pointer-events-none">
+            <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000 ">
                 <div class="gradient-bg h-full flex items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1578991624414-276ef23a534f?q=80&w=3127&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover; pointer-events: none;">
                     <div class="max-w-7xl mx-auto px-4 text-white pointer-events-auto">
                         <div class="max-w-2xl">
@@ -24,13 +24,11 @@
             <!-- Banner 2 -->
             <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
                 <div class="gradient-bg h-full flex items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1599045118108-bf9954418b76?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;">
-                    <div class="max-w-7xl mx-auto px-4 text-white">
+                    <div class="max-w-7xl mx-auto px-4 text-white pointer-events-auto">
                         <div class="max-w-2xl">
                             <h1 class="text-4xl md:text-6xl font-bold mb-4">24/7 Pelayanan Darurat</h1>
                             <p class="text-xl mb-8">Tim medis profesional siap melayani kebutuhan kesehatan Anda kapan saja</p>
-                            <button class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                                Panggil Ambulans
-                            </button>
+                            <a href="#" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Panggil Ambulans</a>
                         </div>
                     </div>
                 </div>
@@ -38,13 +36,11 @@
             <!-- Banner 3 -->
             <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000">
                 <div class="gradient-bg h-full flex items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;">
-                    <div class="max-w-7xl mx-auto px-4 text-white">
+                    <div class="max-w-7xl mx-auto px-4 text-white pointer-events-auto">
                         <div class="max-w-2xl">
                             <h1 class="text-4xl md:text-6xl font-bold mb-4">Konsultasi Online</h1>
                             <p class="text-xl mb-8">Konsultasi dengan dokter spesialis dari rumah dengan teknologi telemedicine</p>
-                            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                                Konsultasi Sekarang
-                            </button>
+                            <a href="#" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Konsultasi Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -136,135 +132,71 @@
     </section>
 
     <!-- Articles Section -->
-<section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Artikel Kesehatan Terbaru</h2>
-            <p class="text-gray-600 text-lg">Informasi kesehatan terpercaya dari para ahli</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Article 1 -->
-            <article class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" 
-                         alt="Kesehatan Umum" 
-                         class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div class="absolute top-4 left-4">
-                        <span class="glass-effect text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Kesehatan Umum
-                        </span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-gradient cursor-pointer transition-all duration-300">
-                        Tips Menjaga Kesehatan di Musim Hujan
-                    </h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Pelajari cara menjaga daya tahan tubuh dan mencegah penyakit umum yang sering muncul saat musim hujan dengan langkah-langkah praktis.
-                    </p>
-                    <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Published: 28 Mei 2025</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Updated: 30 Mei 2025</span>
-                        </div>
-                    </div>
-                    <div class="text-xs text-gray-400">
-                        Created: 25 Mei 2025
-                    </div>
-                </div>
-            </article>
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Artikel Kesehatan Terbaru</h2>
+                <p class="text-gray-600 text-lg">Informasi kesehatan terpercaya dari para ahli</p>
+            </div>
             
-            <!-- Article 2 -->
-            <article class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover animate-slide-up" style="animation-delay: 0.2s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://res.cloudinary.com/dk0z4ums3/image/upload/v1595219274/attached_image/memenuhi-gizi-seimbang-dengan-panduan-piring-makan.jpg" 
-                         alt="Nutrisi" 
-                         class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div class="absolute top-4 left-4">
-                        <span class="glass-effect text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Nutrisi
-                        </span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-gradient cursor-pointer transition-all duration-300">
-                        Panduan Gizi Seimbang untuk Keluarga
-                    </h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Memahami pentingnya nutrisi seimbang dan cara praktis menerapkannya dalam kehidupan sehari-hari untuk keluarga yang lebih sehat.
-                    </p>
-                    <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Published: 26 Mei 2025</span>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                @forelse ($articles as $article)
+                    <article class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover animate-slide-up" style="animation-delay: 0.1s;">
+                        <div class="relative overflow-hidden">
+                            @if ($article->featured_image)
+                                <img src="{{ asset($article->featured_image) }}"
+                                    alt="{{ $article->title }}"
+                                    class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
+                            @else
+                                <img src="/storage/article_images/default-article.jpg"
+                                    alt="Default Image"
+                                    class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
+                            @endif
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            @if ($article->category)
+                                <div class="absolute top-4 left-4">
+                                    <span class="glass-effect text-white px-3 py-1 rounded-full text-sm font-medium">
+                                        {{ $article->category }}
+                                    </span>
+                                </div>
+                            @endif
                         </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Updated: 29 Mei 2025</span>
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4 cursor-pointer transition-all duration-300">
+                                <a href="{{ route('articles.show', $article->slug) }}" class="hover:text-gradient">
+                                    {{ $article->title }}
+                                </a>
+                            </h2>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                {{ Str::limit(strip_tags($article->content), 150) }} {{-- Ambil ringkasan dari konten --}}
+                            </p>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Published: {{ $article->created_at->format('d M Y') }}</span>
+                                </div>
+                                @if ($article->updated_at && $article->updated_at != $article->created_at)
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span>Updated: {{ $article->updated_at->format('d M Y') }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="text-xs text-gray-400">
+                                Created: {{ $article->created_at->format('d M Y H:i') }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-xs text-gray-400">
-                        Created: 24 Mei 2025
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Article 3 -->
-            <article class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover animate-slide-up" style="animation-delay: 0.3s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop" 
-                         alt="Mental Health" 
-                         class="w-full h-64 object-cover transition-transform duration-700 hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div class="absolute top-4 left-4">
-                        <span class="glass-effect text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Mental Health
-                        </span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-gradient cursor-pointer transition-all duration-300">
-                        Mengelola Stres dalam Kehidupan Modern
-                    </h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Strategi efektif untuk mengatasi stres dan menjaga kesehatan mental di era digital dengan pendekatan yang praktis dan terbukti.
-                    </p>
-                    <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Published: 25 Mei 2025</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Updated: 27 Mei 2025</span>
-                        </div>
-                    </div>
-                    <div class="text-xs text-gray-400">
-                        Created: 23 Mei 2025
-                    </div>
-                </div>
-            </article>
-        </div>
-        
+                    </article>
+                @empty
+                    <p class="text-center text-gray-600 col-span-full">Belum ada artikel. Ayo buat yang pertama!</p>
+                @endforelse
+            </div>              
+
         <div class="text-center mt-10">
             <a href="{{ auth()->check() ? url('/articles') : route('login.form') }}" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
                 Lihat Semua Artikel
